@@ -1,0 +1,18 @@
+// 递归法算年龄
+#include<stdio.h>
+int f(int n,int k)
+{
+	if(n>=2)
+	return f(n-1,k)+k;
+	else
+	return 0;
+ } 
+int main()
+{
+	int n,a,k;
+	scanf("%d %d %d",&n,&a,&k);
+	if(n<2||n>100||a<=0||a>100||k<=0||k>100) 
+	 printf("Wrong Number\n");
+	else
+	 printf("%d",f(n,k)+a);
+}
