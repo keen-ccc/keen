@@ -1,0 +1,45 @@
+    //字符串右移 
+	#include <stdio.h>
+    #include <string.h>
+    #define N 201
+void RightLoopMove(char *pStr, int steps)
+    {
+        int i = 0;
+        int len = strlen(pStr);//字符串长度
+        for (i = 0; i <steps; i++)
+        {    
+            char *pend; //定义一个指针 pend 
+			 pend = pStr + len - 1; 
+			 //指针默认指向字符串第一个字符的地址 
+			 //pend为指向字符串最后一个字符的指针 
+			 
+            char tmp; //将尾部的数据取出来放到临时变量tmp里
+			 tmp = *(pend); //获取字符串最后一个字符
+            while (pStr <= pend)//判断字符串尾指针是否指过了字符串头指针：此处为指针比较，比较的结果依赖于两个元素的相对位置 
+            {
+                *pend = *(pend - 1);//将字符串前一个字符拿出来，放到字符串后面
+                pend--;//字符串尾指针，又向头指针的方向走一个，然后又替换一次数据，从而达到所有字符右移一个的目的
+            }
+            //当所有字符串整体右移一位时，最后将临时变量的值放到字符串头
+            *pStr = tmp;
+			
+        } //一次循环整体只右移一位，右移的位数取决于循环的次数 
+    }
+    int main()
+    {
+    	int a;
+        char str[N];
+        char *find;
+        scanf("%d",&a);
+        getchar();//如果没有这一步 ，那么无法继续输入后面的字符串 （getchar可以吞掉scanf后面输入的回车） 
+        fgets(str,N,stdin);
+        find = strchr(str, '\n');          //查找换行符
+       if(find)                            //如果find不为空指针
+        *find = '\0';                      //消除fgets函数读入的换行符 
+       // gets(str);(用gets函数)
+	    RightLoopMove(str,a);              //不用加&符号 
+        printf("%s",str);
+        //fputs(str,stdout);
+        //getchar();
+        return 0;
+    }
