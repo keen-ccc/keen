@@ -1,0 +1,21 @@
+//求绝对值最大的数 
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+int main()
+{
+	int m,max,i,j;
+	int *p;
+	scanf("%d",&m);
+	p=(int*)malloc(m*sizeof(int));  //创建动态数组 
+	int a[m];
+	for(i=0;i<m;i++){
+	scanf("%d",&a[i]);}
+	max=a[0];
+	for(j=1;j<m;j++){
+		if(abs(a[j])>abs(max)){
+			max=a[j];
+		}
+	}
+	printf("%d",max);
+}
