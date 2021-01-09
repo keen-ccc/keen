@@ -1,0 +1,15 @@
+//逆序 
+#include<stdio.h>
+void p(){
+	char ch;
+	ch=getchar();
+	if(ch!='\n'){
+		p();
+		putchar(ch);
+	}
+}
+int main()
+{
+	//char s[100];
+	p();
+}
